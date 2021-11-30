@@ -8,7 +8,7 @@ import {User} from "../../models/user/user";
 export class ServiceHelper {
 
   private readonly _protocol = 'http';
-  private readonly _host = 'localhost';
+  private readonly _host = '34.127.41.96';
   private readonly _port = '8088';
 
   constructor() {
