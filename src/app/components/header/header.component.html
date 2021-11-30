@@ -1,0 +1,18 @@
+<header>
+  <a routerLink="/user">
+    <img class="logo" src="../../../assets/logo.png" alt="" width="100" height="80">
+  </a>
+
+  <button *ngIf="userService.getRole() == 'ADMIN'" (click)="showAdminPage()">Admin</button>
+
+  <button (click)="showAboutPage()">About</button>
+
+  <button *ngIf="userService.isAuth()" (click)="showChats()">Chats</button>
+
+  <button *ngIf="!userService.isAuth()" (click)="logIn()">Log in</button>
+  <button mat-button *ngIf="userService.isAuth()" [matMenuTriggerFor]="menu">{{getUsersName()}}</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="getAccountInfo()">Account info</button>
+    <button mat-menu-item (click)="logOut()">Log out</button>
+  </mat-menu>
+</header>

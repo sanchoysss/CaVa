@@ -1,0 +1,82 @@
+<div class="edit-user-component">
+  <div class="edit-user">
+    <form class="edit-form" [formGroup]="editForm" (ngSubmit)="onEdit()">
+      <h1>Edit your account</h1>
+
+      <div class="data">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter login</mat-label>
+          <input matInput placeholder="login" formControlName="login" required>
+          <mat-error *ngIf="login?.invalid">{{getErrorForLogin()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="data">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter name</mat-label>
+          <input matInput placeholder="name" formControlName="name">
+        </mat-form-field>
+      </div>
+
+      <div class="data">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter email</mat-label>
+          <input matInput placeholder="email" formControlName="email" required>
+          <mat-error *ngIf="email?.invalid">{{getErrorForEmail()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="data">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter description</mat-label>
+          <textarea matInput placeholder="Write something about yourself" formControlName="description" ></textarea>
+          <mat-error *ngIf="description?.invalid">{{getErrorForDescription()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="data">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your hobbies</mat-label>
+          <textarea matInput placeholder="Write something about your hobbies" formControlName="hobbies" ></textarea>
+          <mat-error *ngIf="hobbies?.invalid">{{getErrorForHobbies()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="data">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter link on your twitter account</mat-label>
+          <input type="url" matInput placeholder="twitter" formControlName="twitterLink" >
+          <mat-error *ngIf="twitterLink?.invalid">{{getErrorForTwitterLink()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="data">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter link on your facebook account</mat-label>
+          <input type="url" matInput placeholder="facebook" formControlName="facebookLink">
+          <mat-error *ngIf="facebookLink?.invalid">{{getErrorForFacebookLink()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="data">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter link on your instagram account</mat-label>
+          <input type="url" matInput placeholder="instagram" formControlName="instagramLink">
+          <mat-error *ngIf="instagramLink?.invalid">{{getErrorForInstagramLink()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="data">
+        <div class="error" *ngIf="error != null">{{error}}</div>
+      </div>
+
+      <button class="edit-btn" type="submit" [disabled]="!editForm.valid || user.role == 'ADMIN'">Save changes</button>
+    </form>
+
+    <div class="del-div">
+      <button mat-raised-button class="delete-btn" (click)="deleteUser()">Delete</button>
+    </div>
+  </div>
+</div>
+
+

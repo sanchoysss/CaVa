@@ -1,0 +1,48 @@
+<div class="sign-up-component">
+
+  <form class="registration-form" [formGroup]="registerForm" (ngSubmit)="registerUser()">
+      <h1>Sign up</h1>
+
+    <div class="data">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter login</mat-label>
+        <input matInput placeholder="login" formControlName="login" required>
+        <mat-error *ngIf="login?.invalid">{{getErrorForLogin()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="data">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter name</mat-label>
+        <input matInput placeholder="name" formControlName="name">
+        <mat-error *ngIf="name?.invalid">{{getErrorForName()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="data">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="password?.invalid">{{getErrorForPassword()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="data">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter email</mat-label>
+        <input matInput placeholder="email" formControlName="email" required>
+        <mat-error *ngIf="email?.invalid">{{getErrorForEmail()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="data">
+      <div class="error" *ngIf="error != null">{{error}}</div>
+    </div>
+
+    <button class="register-btn" type="submit" [disabled]="!registerForm.valid">Sign up</button>
+  </form>
+
+</div>

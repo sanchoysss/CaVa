@@ -1,0 +1,37 @@
+<div class="login-component">
+
+  <form [formGroup]="loginForm"  (ngSubmit)="loginUser()" class="login-form">
+
+    <h1>Login</h1>
+
+    <div class="data">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter login</mat-label>
+        <input matInput placeholder="login" formControlName="login" required>
+        <mat-error *ngIf="login?.invalid">{{getErrorForLogin()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="data">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="password?.invalid">{{getErrorForPassword()}}</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="data">
+        <div class="error" *ngIf="error != null">{{error}}</div>
+    </div>
+
+    <button class="login-btn" type="submit" [disabled]="!loginForm.valid">Log in</button>
+
+    <div class="sign-up-route">
+      Don't have account yet? <a routerLink="/sign-up">Sign up!</a>
+    </div>
+  </form>
+
+</div>

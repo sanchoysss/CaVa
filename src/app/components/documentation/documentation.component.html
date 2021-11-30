@@ -1,0 +1,168 @@
+<div class="container">
+
+  <section id="idocs_start">
+    <h1>About</h1>
+    <hr>
+    <div class="row">
+      <div class="col-sm-6 col-lg-4">
+        <ul class="list-unstyled">
+          <li><strong>Version:</strong> {{documentationDto?.version}}</li>
+          <li><strong>Author:</strong> <a href="https://github.com/sanchoysss" target="_blank">Alexander Mironovich</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-6 col-lg-4">
+        <ul class="list-unstyled">
+          <li><strong class="font-weight-700">Created:</strong> {{documentationDto?.creation}}</li>
+          <li><strong>Update:</strong> {{documentationDto?.update}}</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section id="idocs_installation">
+    <h2>What is ÇaVa?</h2>
+    <p>
+      ÇaVa is a messenger that allows you communicate with other users. Just type a message and send it to a receiver.
+      Your message will be delivered instantly.
+    </p>
+
+    <h2>Sign up and login</h2>
+    <p>
+      First of all, you need to sign up or login to start using this application. Use
+      <a routerLink="/sign-up" target="_blank">sign up link</a> or <a routerLink="/login" target="_blank">login link</a>
+      to sign up or login.
+    </p>
+
+    <h3>Process of authorization</h3>
+    <p>
+      If user didn't logged in system, he will be redirected to the login page. There he needs to fill the form of
+      authorization. To login he needs to enter his login and password.
+    </p>
+    <div class="wrapper">
+      <div class="img-wrapper">
+        <img class="img" src="../assets/login-page.png" alt="login img" width="100%">
+      </div>
+    </div>
+
+    <p>
+      To sign up he must click the link that will
+      redirect him to the registration form. There he needs to input his login, name (optional parameter), email and
+      password.
+    </p>
+    <div class="wrapper">
+      <div class="img-wrapper">
+        <img class="img" src="../assets/sign-in-page.png" alt="sign-in img" width="100%">
+      </div>
+    </div>
+    <p>If user won't input all necessary data, form won't let him register (the same will be on login page).</p>
+    <div class="wrapper">
+      <div class="img-wrapper">
+        <img class="img" src="../assets/sign-in-page-invalid.png" alt="sign-in invalid img" width="100%">
+      </div>
+    </div>
+
+    <h2>Messaging</h2>
+    <p>
+      After registration/signing in client will send request to the server to log in or sign up the user. If
+      everything ok, server will accept authorization by sending a special token through which server can be able
+      to recognize the user. If something went wrong, server returns an error that will be displayed on client side.
+      Here you can see an example of failed authorization.
+    </p>
+    <div class="wrapper">
+      <div class="img-wrapper">
+        <img class="img" src="../assets/failed-authorization.png" alt="sign-in invalid img" width="100%">
+      </div>
+    </div>
+
+    <p>
+      When user logged in, he can click on button 'Chats' that will redirect him to the list of his chats.
+    </p>
+    <div class="wrapper">
+      <div class="img-wrapper">
+        <img class="img" src="../assets/chat-nav.png" alt="sign-in invalid img" width="100%">
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="img-wrapper">
+        <img class="img" src="../assets/chat-list.png" alt="sign-in invalid img" width="100%">
+      </div>
+    </div>
+
+    <p>
+      To open any chat just click on it and you will be able to see your message history with a particular user.
+      Type anything in special input for sending the messages and click the button to send your message.
+    </p>
+    <div class="wrapper">
+      <div class="img-wrapper">
+        <img class="img" src="../assets/message-sending.png" alt="sign-in invalid img" width="100%">
+      </div>
+    </div>
+    <p>
+      After clicking the button, client will send this message to the server and server notify receiver that he has a
+      new message. Message, that was sent by user, will be displayed in the next way.
+    </p>
+    <div class="wrapper">
+      <div class="img-wrapper">
+        <img class="img" src="../assets/sent-message.png" alt="sign-in invalid img" width="100%">
+      </div>
+    </div>
+    <p>
+      Receiver sees this message in the different way.
+    </p>
+    <div class="wrapper">
+      <div class="img-wrapper">
+        <img class="img" src="../assets/msg-received.png" alt="sign-in invalid img" width="100%">
+      </div>
+    </div>
+
+    <h2>Users profile</h2>
+    <p>
+      Click on the button with your name (or login if you didn't enter your name during registration) and then you
+      will be able to see your profile or log out.
+    </p>
+    <div class="wrapper">
+      <div class="img-wrapper">
+        <img class="img" src="../assets/acc-info-btn.png" alt="sign-in invalid img" width="100%">
+      </div>
+    </div>
+
+    <p>
+      On yours profile page you can view different information about your account and change it by pressing the button
+      'Edit profile'.
+    </p>
+    <div class="wrapper">
+      <div class="img-wrapper">
+        <img class="img" src="../assets/acc-info.png" alt="sign-in invalid img" width="100%">
+      </div>
+    </div>
+
+    <p>
+      Here you can write some additional information about your profile. You can change anything, but all the fields,
+      that where used in registration are required.
+    </p>
+    <div class="wrapper">
+      <div class="img-wrapper">
+        <img class="img" src="../assets/acc-edit-1.png" alt="sign-in invalid img" width="100%">
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="img-wrapper">
+        <img class="img" src="../assets/acc-edit-2.png" alt="sign-in invalid img" width="100%">
+      </div>
+    </div>
+
+    <p>
+      If you fill any of links on other social networks, it will be displayed on your profile.
+    </p>
+    <div class="wrapper">
+      <div class="img-wrapper">
+        <img class="img" src="../assets/acc-info-after-edit.png" alt="sign-in invalid img" width="100%">
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+</div>

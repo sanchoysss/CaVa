@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="messaging">
+    <div class="inbox_msg">
+      <div class="inbox_people">
+        <div class="headind_srch">
+          <div class="recent_heading">
+            <h4>Chats</h4>
+          </div>
+          <div class="srch_bar">
+            <div class="stylish-input-group">
+             <mat-form-field appearance="fill">
+               <mat-label>Users</mat-label>
+               <input type="text"
+                      placeholder="Search for users"
+                      aria-label="Search"
+                      matInput
+                      #searchBar
+                      (input)="waitAndFind()"
+                      class="search-bar"
+                      [matAutocomplete]="auto">
+               <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                 <mat-option *ngFor="let user of searchedUsers?.usersFoundByLogin" [value]="user.login">
+                   <button class="btn-option" (click)="chooseUser(user)">
+                     <h4>{{user.name}}</h4>
+                     @{{user.login}}
+                   </button>
+                 </mat-option>
+                 <mat-option *ngFor="let user of searchedUsers?.usersFoundByName" [value]="user.login">
+                   <button class="btn-option" (click)="chooseUser(user)">
+                     <h3>{{user.name}}</h3>
+                     {{user.login}}
+                   </button>
+                 </mat-option>
+               </mat-autocomplete>
+             </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="inbox_chat">
+          <button class="safe-mode" (click)="changeMode()">{{safeModeText}}</button>
+          <div class="chat_list" *ngFor="let chat of chats" (click)="selectChat(chat.id)"
+          [class]="chat.id == selectedChatId ? 'chat_list active_chat' : 'chat_list' ">
+            <div class="chat_people">
+              <div class="chat_img" (click)="clickOnUser(chat)"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+              <div class="chat_ib">
+                <h5>{{getNameForChat(chat)}} <span *ngIf="!safeMode" class="chat_date">{{timeHelper.getDateOfLastMessage(chat)}}</span></h5>
+                <p *ngIf="!safeMode"> {{ getTextOfLastMessage(chat) }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mesgs" *ngIf="selectedChatId != null">
+        <div #chatHistory class="msg_history">
+          <button *ngIf="buttonIsEnabled(selectedChatId)" class="btn-load-more" (click)="loadMessages(selectedChatId)">Load more</button>
+          <div *ngFor="let message of getMessagesByChatId(selectedChatId)">
+            <div class="incoming_msg" *ngIf="message.messageType == MessageType.INCOMING">
+              <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+              <div class="received_msg">
+                <div class="received_withd_msg">
+                  <p>{{message.text}}</p>
+                  <span class="time_date">{{timeHelper.getDateForMessage(message.sendingDate)}}</span></div>
+              </div>
+            </div>
+
+            <div class="outgoing_msg" *ngIf="message.messageType == MessageType.OUTGOING">
+              <div class="sent_msg">
+                <p>{{message.text}}</p>
+                <span class="time_date">{{timeHelper.getDateForMessage(message.sendingDate)}}</span> </div>
+            </div>
+
+            <div class="system_msg" *ngIf="message.messageType == MessageType.SYSTEM">
+              {{message.text}}
+            </div>
+          </div>
+
+        </div>
+        <div class="type_msg">
+          <div class="input_msg_write">
+            <input #messageInput type="text" class="write_msg" placeholder="Type a message" />
+            <button class="msg_send_btn" (click)="collectDataAndSendMessage(messageInput, selectedChatId)" type="button">
+              <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+.users-list {
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px 40px;
+}
+.users-table {
+    max-width: 90%;
+    min-width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    border-collapse: collapse;
+    border-spacing: 10px;
+    border:2px solid;
+    height: 100%;
+    padding: 0;
+}
+.users-thead {
+    width: 100%;
+
+}
+.users-tbody {
+    width: 100%;
+
+}
+th, td {
+    border: 1px solid grey;
+    padding: 10px 15px;
+}
+th {
+    color:#039;
+}
+
+td {
+    color:#669;
+}
+
+tr:nth-child(2n) {
+    background: #e8edff;
+}

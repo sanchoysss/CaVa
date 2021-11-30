@@ -1,0 +1,57 @@
+<div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+  <div class="card p-4">
+    <div class=" image d-flex flex-column justify-content-center align-items-center">
+      <button class="btn btn-secondary">
+        <img src="https://i.imgur.com/wvxPV9S.png" alt="image" height="100" width="100"/>
+      </button>
+      <span class="name mt-3">{{accountInfo?.name}}</span>
+      <span class="idd">@{{accountInfo?.login}}</span>
+      <div class="d-flex flex-row justify-content-center align-items-center gap-2">
+        <span class="idd1">{{accountInfo?.email}}</span>
+        <span><button [cdkCopyToClipboard]="getEmail()" class="fa fa-copy"></button></span>
+      </div>
+      <div class="d-flex flex-row justify-content-center align-items-center mt-3">
+<!--        <span class="number">1069-->
+<!--          <span class="follow">Followers</span>-->
+<!--        </span>-->
+      </div>
+      <div class=" d-flex mt-2">
+        <button *ngIf="accountInfo?.login == userService.getLogin()" class="btn1 btn-dark" (click)="editProfile()">Edit Profile</button>
+      </div>
+      <div class="text mt-3">
+
+        <div *ngIf="accountInfo?.description == null || accountInfo?.description == ''">
+          This user didn't write any description
+        </div>
+
+        <div *ngIf="accountInfo?.description != null && accountInfo?.description != ''">
+          <h3>Description:</h3>
+          {{accountInfo?.description}}
+        </div>
+        <br>
+        <br>
+        <div *ngIf="accountInfo?.hobbies == null || accountInfo?.hobbies == ''">
+          This user didn't write anything about hobbies
+        </div>
+
+        <div *ngIf="accountInfo?.hobbies != null && accountInfo?.hobbies != ''">
+          <h3>Hobbies</h3>
+          {{accountInfo?.hobbies}}
+        </div>
+
+      </div>
+      <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center">
+        <span *ngIf="!(accountInfo?.twitterLink == null ||  accountInfo?.twitterLink?.trim() == '')">
+          <a href="{{accountInfo?.twitterLink}}" target="_blank" class="fa fa-twitter"></a>
+        </span>
+        <span *ngIf="!(accountInfo?.facebookLink == null ||  accountInfo?.facebookLink?.trim() == '')">
+          <a class="fa fa-facebook-f" href="{{accountInfo?.facebookLink}}" target="_blank"></a>
+        </span>
+        <span *ngIf="!(accountInfo?.instagramLink == null ||  accountInfo?.instagramLink?.trim() == '')">
+          <a class="fa fa-instagram" href="{{accountInfo?.instagramLink}}" target="_blank"></a>
+        </span>
+      </div>
+      <div class=" px-2 rounded mt-4 date "><span class="join">Joined {{getRegistrationDate()}}</span></div>
+    </div>
+  </div>
+</div>
